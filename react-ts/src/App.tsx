@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Router from './router/Router';
 
-function App() {
-  return <div>hello world</div>;
+class App extends Component {
+  render(): React.ReactNode {
+    return <Router />;
+  }
 }
 
 export default App;

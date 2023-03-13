@@ -2,16 +2,9 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import classes from './Navigation.module.scss';
 
-interface IState {
-  page: string;
-}
-
-export default class Navigation extends Component<object, IState> {
+export default class Navigation extends Component {
   constructor(props: object | Readonly<object>) {
     super(props);
-    this.state = {
-      page: 'Home',
-    };
   }
   render() {
     return (

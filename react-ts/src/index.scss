@@ -73,3 +73,19 @@ h6 {
   font-size: inherit;
   font-weight: 400;
 }
+
+@import "./theme/variables";
+@import "./theme/fonts";
+
+body {
+  font-family: "Source", sans-serif;
+  font-weight: 400;
+  color: $fontColor;
+}
+
+[class*="__container"] {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}

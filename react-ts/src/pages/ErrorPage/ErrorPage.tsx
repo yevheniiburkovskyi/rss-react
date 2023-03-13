@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 export default class ErrorPage extends Component {
-  render(): React.ReactNode {
+  render() {
     return <div>404</div>;
   }
 }

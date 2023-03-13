@@ -1,0 +1,20 @@
+@import "../../../theme/variables";
+.navigation__list {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 30px;
+}
+
+.link {
+  color: $fontColor;
+  font-size: 2rem;
+  &:hover {
+    color: $yellowColor;
+  }
+}
+
+.link_active {
+  text-decoration: underline;
+  pointer-events: none;
+  color: $yellowColor;
+}

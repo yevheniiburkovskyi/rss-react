@@ -5,12 +5,12 @@ import React from 'react';
 
 export const routes = [
   {
-    name: 'home',
+    name: 'Home',
     path: '/',
     element: <Home />,
   },
   {
-    name: 'about us',
+    name: 'About us',
     path: '/About Us',
     element: <AboutUs />,
   },

@@ -1,0 +1,10 @@
+.error {
+  height: 85vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__title {
+    font-size: 10rem;
+  }
+}

@@ -5,6 +5,6 @@ import AboutUs from '../src/pages/AboutUs/AboutUs';
 describe('AboutUs', () => {
   it('should have title', () => {
     render(<AboutUs />);
-    expect(screen.getByText(/about us/i)).toBeInTheDocument();
+    expect(screen.getByText(/lorem/i)).toBeInTheDocument();
   });
 });

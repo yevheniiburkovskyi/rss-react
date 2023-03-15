@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import classes from './Navigation.module.scss';
 
-export default class Navigation extends Component {
-  constructor(props: object | Readonly<object>) {
+interface IProps {
+  changePage: () => void;
+}
+export default class Navigation extends Component<IProps> {
+  constructor(props: IProps | Readonly<IProps>) {
     super(props);
   }
   render() {
@@ -14,6 +17,7 @@ export default class Navigation extends Component {
           className={({ isActive }) =>
             isActive ? `${classes.link_active} ${classes.link}` : `${classes.link}`
           }
+          onClick={() => this.props.changePage()}
         >
           Home
         </NavLink>
@@ -22,6 +26,7 @@ export default class Navigation extends Component {
           className={({ isActive }) =>
             isActive ? `${classes.link_active} ${classes.link}` : `${classes.link}`
           }
+          onClick={() => this.props.changePage()}
         >
           About Us
         </NavLink>

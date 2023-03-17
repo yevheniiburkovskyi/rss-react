@@ -16,28 +16,36 @@ export interface ICard {
 interface IState {
   dataArr: undefined | ICard[];
 }
+interface IProps {
+  searchValue: string;
+}
 
-export default class CardList extends Component<object, IState> {
-  constructor(props: object) {
+export default class CardList extends Component<IProps, IState> {
+  constructor(props: IProps) {
     super(props);
     this.state = {
       dataArr: undefined,
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     fetch('https://fakestoreapi.com/products')
       .then((res) => res.json())
       .then((json) => this.setState({ dataArr: json }));
+  }
+
+  cardFilter(cardItem: ICard, patternStr: string) {
+    const pattern = new RegExp(`^${patternStr}`, 'ig');
+    if (cardItem.title.match(pattern)) {
+      return <Card key={cardItem.id} cardData={cardItem} />;
+    }
   }
 
   renderList() {
     if (this.state.dataArr) {
       return (
         <ul className={classes.cards}>
-          {this.state.dataArr.map((cardItem) => (
-            <Card key={cardItem.id} cardData={cardItem} />
-          ))}
+          {this.state.dataArr.map((cardItem) => this.cardFilter(cardItem, this.props.searchValue))}
         </ul>
       );
     }

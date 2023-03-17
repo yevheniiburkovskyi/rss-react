@@ -34,7 +34,7 @@ export default class Header extends Component<unknown, IProps> {
     if (prevState.changePage !== this.state.changePage) this.locationHandler();
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.locationHandler();
   }
 

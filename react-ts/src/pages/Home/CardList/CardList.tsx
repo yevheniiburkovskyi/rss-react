@@ -31,7 +31,8 @@ export default class CardList extends Component<IProps, IState> {
   componentDidMount() {
     fetch('https://fakestoreapi.com/products')
       .then((res) => res.json())
-      .then((json) => this.setState({ dataArr: json }));
+      .then((json) => this.setState({ dataArr: json }))
+      .catch(() => console.error());
   }
 
   cardFilter(cardItem: ICard, patternStr: string) {

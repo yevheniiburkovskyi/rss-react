@@ -1,4 +1,3 @@
-// import Header from './components/Header/Header';
 import React, { Component } from 'react';
 import Router from './router/Router';
 import classes from './App.module.scss';

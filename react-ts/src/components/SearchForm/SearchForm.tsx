@@ -11,7 +11,7 @@ export default class SearchForm extends Component<IProps> {
   }
   render() {
     return (
-      <form className={classes.form}>
+      <form className={classes.form} role="search">
         <input
           type="text"
           value={this.props.inputValue}

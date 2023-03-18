@@ -3,8 +3,9 @@ import React from 'react';
 import AboutUs from '../src/pages/AboutUs/AboutUs';
 
 describe('AboutUs', () => {
-  it('should have title', () => {
+  it('should have text', () => {
     render(<AboutUs />);
-    expect(screen.getByText(/lorem/i)).toBeInTheDocument();
+    const mainText = screen.getByText(/lorem/i);
+    expect(mainText).toBeInTheDocument();
   });
 });

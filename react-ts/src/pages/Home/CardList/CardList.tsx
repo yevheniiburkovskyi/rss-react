@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import getData from '../../../service/getData';
 import Card from './Card/Card';
 import classes from './CardList.module.scss';
 export interface ICard {
@@ -15,7 +16,7 @@ export interface ICard {
   images: string[];
 }
 
-interface IData {
+export interface IData {
   limit: number;
   products: ICard[];
   skip: number;
@@ -37,10 +38,9 @@ export default class CardList extends Component<IProps, IState> {
   }
 
   componentDidMount() {
-    fetch('https://dummyjson.com/products?limit=30&skip=10')
-      .then((res) => res.json())
+    getData()
       .then((json: IData) => this.setState({ dataArr: json.products }))
-      .catch(() => console.error());
+      .catch(() => null);
   }
 
   cardFilter(cardItem: ICard, patternStr: string) {

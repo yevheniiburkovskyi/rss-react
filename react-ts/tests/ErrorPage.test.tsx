@@ -3,8 +3,9 @@ import React from 'react';
 import ErrorPage from '../src/pages/ErrorPage/ErrorPage';
 
 describe('ErrorPage', () => {
-  it('should have title', () => {
+  it('Should have title', () => {
     render(<ErrorPage />);
-    expect(screen.getByText(/404/i)).toBeInTheDocument();
+    const pageText = screen.getByText('404');
+    expect(pageText).toBeInTheDocument();
   });
 });

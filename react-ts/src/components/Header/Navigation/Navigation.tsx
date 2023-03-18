@@ -11,7 +11,7 @@ export default class Navigation extends Component<IProps> {
   }
   render() {
     return (
-      <nav className={classes.navigation__list}>
+      <nav className={classes.navigation__list} role="menubar">
         <NavLink
           to="/"
           className={({ isActive }) =>

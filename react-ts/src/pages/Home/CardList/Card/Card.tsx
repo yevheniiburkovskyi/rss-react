@@ -19,7 +19,7 @@ export default class Card extends Component<IProps> {
     return (
       <li className={classes.card}>
         <div className={classes.card__img}>
-          <img src={this.props.cardData.image} alt={this.props.cardData.title} />
+          <img src={this.props.cardData.thumbnail} alt={this.props.cardData.title} />
         </div>
         <h3 className={classes.card__title}>{this.sliceString(this.props.cardData.title)}</h3>
         <p className={classes.card__price}>{`${this.props.cardData.price}$`}</p>

@@ -4,14 +4,22 @@ import classes from './CardList.module.scss';
 export interface ICard {
   id: number;
   title: string;
-  price: number;
   description: string;
+  price: number;
+  discountPercentage: number;
+  rating: number;
+  stock: number;
+  brand: string;
   category: string;
-  image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
+  thumbnail: string;
+  images: string[];
+}
+
+interface IData {
+  limit: number;
+  products: ICard[];
+  skip: number;
+  total: number;
 }
 interface IState {
   dataArr: undefined | ICard[];
@@ -29,9 +37,9 @@ export default class CardList extends Component<IProps, IState> {
   }
 
   componentDidMount() {
-    fetch('https://fakestoreapi.com/products')
+    fetch('https://dummyjson.com/products?limit=30&skip=10')
       .then((res) => res.json())
-      .then((json) => this.setState({ dataArr: json }))
+      .then((json: IData) => this.setState({ dataArr: json.products }))
       .catch(() => console.error());
   }
 

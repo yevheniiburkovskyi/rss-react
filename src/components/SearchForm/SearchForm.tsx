@@ -13,7 +13,7 @@ export default class SearchForm extends Component<IProps> {
     return (
       <form className={classes.form} role="search">
         <input
-          type="text"
+          type="search"
           value={this.props.inputValue}
           onChange={(e) => this.props.setInput(e.target.value)}
           className={classes.form__input}

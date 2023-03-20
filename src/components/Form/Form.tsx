@@ -1,4 +1,4 @@
-import { Button } from '../../../components/Button/Button';
+import { Button } from '../Button/Button';
 import React, { Component, FormEvent } from 'react';
 import classes from './Form.module.scss';
 

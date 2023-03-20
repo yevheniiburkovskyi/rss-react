@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ICard } from '../CardList';
+import { ICard } from 'service/getData';
 import classes from './Card.module.scss';
 interface IProps {
   cardData: ICard;

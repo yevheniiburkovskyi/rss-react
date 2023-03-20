@@ -1,3 +1,4 @@
+@import "../../../theme/_variables";
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -8,4 +9,5 @@
 .loading {
   font-size: 3rem;
   text-align: center;
+  color: $blackColor;
 }

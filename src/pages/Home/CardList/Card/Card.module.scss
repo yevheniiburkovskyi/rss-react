@@ -4,15 +4,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: $purpleColor;
+  background-color: $darkBlueColor;
   padding: 20px;
   border-radius: 25px;
-  border: 2px solid $blueColor;
   &__img {
     width: 100%;
     height: 300px;
     background-color: white;
-    border: 2px solid $blueColor;
+    border: 2px solid $lightBlueColor;
     border-radius: 20px;
     margin-bottom: 10px;
     overflow: hidden;
@@ -39,7 +38,7 @@
   &__details {
     width: 200px;
     height: 50px;
-    background-color: $blueColor;
+    background-color: $whiteColor;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -48,8 +47,9 @@
     font-size: 1.5rem;
     transition: all 0.5s;
     margin-bottom: 10px;
+    color: $blackColor;
     &:hover {
-      background-color: $yellowColor;
+      background-color: $lightBlueColor;
     }
   }
 }

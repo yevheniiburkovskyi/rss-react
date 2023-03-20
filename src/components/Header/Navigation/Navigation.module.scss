@@ -6,16 +6,16 @@
 }
 
 .link {
-  color: $fontColor;
+  color: $blackColor;
   font-size: 2rem;
   transition: all 0.5s;
   &:hover {
-    color: $yellowColor;
+    color: $greenColor;
   }
 }
 
 .link_active {
   text-decoration: underline;
   pointer-events: none;
-  color: $yellowColor;
+  color: $greenColor;
 }

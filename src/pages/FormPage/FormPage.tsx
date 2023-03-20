@@ -1,13 +1,14 @@
 import Container from '../../components/Container/Container';
 import React, { Component } from 'react';
-import classes from './Form.module.scss';
+import classes from './FormPage.module.scss';
+import Form from './Form/Form';
 
-export default class Form extends Component {
+export default class FormPage extends Component {
   render() {
     return (
-      <section>
+      <section className={classes.form__page}>
         <Container>
-          <div>Form</div>
+          <Form />
         </Container>
       </section>
     );

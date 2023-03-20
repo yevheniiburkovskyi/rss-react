@@ -1,3 +1,4 @@
+import { Button } from '../../../../components/Button/Button';
 import React, { Component } from 'react';
 import { ICard } from 'service/getData';
 import classes from './Card.module.scss';
@@ -43,10 +44,11 @@ export default class Card extends Component<IProps, IState> {
           {this.sliceString(this.props.cardData.title)}
         </h3>
         <p className={classes.card__price}>{`${this.props.cardData.price}$`}</p>
-        <button className={classes.card__buyBtn}>Buy</button>
-        <button className={classes.card__detailsBtn} onClick={this.detailsHandler.bind(this)}>
-          {this.state.details ? 'Hide details' : 'Show details'}
-        </button>
+        <Button content={'Buy'} />
+        <Button
+          onClickFunc={this.detailsHandler.bind(this)}
+          content={this.state.details ? 'Hide details' : 'Show details'}
+        />
       </li>
     );
   }

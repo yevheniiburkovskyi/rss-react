@@ -2,7 +2,7 @@ import AboutUs from '../pages/AboutUs/AboutUs';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import Home from '../pages/Home/Home';
 import React from 'react';
-import Form from '../pages/Form/Form';
+import FormPage from '../pages/FormPage/FormPage';
 
 export const routes = [
   {
@@ -18,7 +18,7 @@ export const routes = [
   {
     name: 'Form',
     path: '/Form',
-    element: <Form />,
+    element: <FormPage />,
   },
   {
     name: '404',

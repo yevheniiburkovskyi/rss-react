@@ -1,27 +1,7 @@
 import React, { Component } from 'react';
-import getData from '../../../service/getData';
+import getData, { ICard, IData } from '../../../service/getData';
 import Card from './Card/Card';
 import classes from './CardList.module.scss';
-export interface ICard {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  brand: string;
-  category: string;
-  thumbnail: string;
-  images: string[];
-}
-
-export interface IData {
-  limit: number;
-  products: ICard[];
-  skip: number;
-  total: number;
-}
 interface IState {
   dataArr: undefined | ICard[];
 }

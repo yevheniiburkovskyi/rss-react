@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import { ICard } from 'service/getData';
 import classes from './Card.module.scss';
+import CardDetails from './CardDetails';
 interface IProps {
   cardData: ICard;
 }
-export default class Card extends Component<IProps> {
+interface IState {
+  details: boolean;
+}
+export default class Card extends Component<IProps, IState> {
   constructor(props: IProps | Readonly<IProps>) {
     super(props);
+    this.state = {
+      details: false,
+    };
   }
 
   sliceString(str: string) {
@@ -16,18 +23,30 @@ export default class Card extends Component<IProps> {
     return str;
   }
 
+  detailsHandler() {
+    this.setState({
+      details: !this.state.details,
+    });
+  }
+
   render() {
     return (
       <li className={classes.card} data-testid="product-card">
-        <div className={classes.card__img}>
+        <div className={classes.card__block}>
           <img src={this.props.cardData.thumbnail} alt={this.props.cardData.title} />
+          <CardDetails
+            cardData={this.props.cardData}
+            activeClass={this.state.details ? classes.showDetails : classes.hideDetails}
+          />
         </div>
         <h3 className={classes.card__title} data-testid="product-card-title">
           {this.sliceString(this.props.cardData.title)}
         </h3>
         <p className={classes.card__price}>{`${this.props.cardData.price}$`}</p>
-        <button className={classes.card__buy}>Buy</button>
-        <button className={classes.card__details}>Details</button>
+        <button className={classes.card__buyBtn}>Buy</button>
+        <button className={classes.card__detailsBtn} onClick={this.detailsHandler.bind(this)}>
+          {this.state.details ? 'Hide details' : 'Show details'}
+        </button>
       </li>
     );
   }

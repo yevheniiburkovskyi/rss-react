@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/pages/Home/CardList/Card/Card.tsx</title>
+    <title>Code coverage report for src/pages/Home/CardList/Card/CardDetails.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">src/pages/Home/CardList/Card</a> Card.tsx</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">src/pages/Home/CardList/Card</a> CardDetails.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.45% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>49/53</span>
+                <span class='fraction'>36/36</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.42% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/7</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/4</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.45% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>49/53</span>
+                <span class='fraction'>36/36</span>
             </div>
         
             
@@ -99,27 +99,7 @@
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a>
-<a name='L40'></a><a href='#L40'>40</a>
-<a name='L41'></a><a href='#L41'>41</a>
-<a name='L42'></a><a href='#L42'>42</a>
-<a name='L43'></a><a href='#L43'>43</a>
-<a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -130,24 +110,10 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
@@ -172,53 +138,36 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
 import { ICard } from 'service/getData';
 import classes from './Card.module.scss';
-import CardDetails from './CardDetails';
 interface IProps {
   cardData: ICard;
+  activeClass: string;
 }
-interface IState {
-  details: boolean;
-}
-export default class Card extends Component&lt;IProps, IState&gt; {
-  constructor(props: IProps | Readonly&lt;IProps&gt;) {
+export default class CardDetails extends Component&lt;IProps&gt; {
+  constructor(props: IProps) {
     super(props);
-    this.state = {
-      details: false,
-    };
   }
-&nbsp;
-  sliceString(str: string) {
-    if (str.length &gt; 20) {
-      return `${str.slice(0, 20)}...`;
-    }
-    return str;
-  }
-&nbsp;
-<span class="fstat-no" title="function not covered" >  detailsHandler() {</span>
-<span class="cstat-no" title="statement not covered" >    this.setState({</span>
-<span class="cstat-no" title="statement not covered" >      details: !this.state.details,</span>
-<span class="cstat-no" title="statement not covered" >    });</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
-&nbsp;
   render() {
     return (
-      &lt;li className={classes.card} data-testid="product-card"&gt;
-        &lt;div className={classes.card__block}&gt;
-          &lt;img src={this.props.cardData.thumbnail} alt={this.props.cardData.title} /&gt;
-          &lt;CardDetails
-            cardData={this.props.cardData}
-            activeClass={this.state.<span class="branch-0 cbranch-no" title="branch not covered" >details ? classes.showDetails : c</span>lasses.hideDetails}
-          /&gt;
+      &lt;div className={`${classes.card__details} ${this.props.activeClass}`}&gt;
+        &lt;ul className={classes['card__details-list']}&gt;
+          &lt;li className={classes['card__details-list-rating']}&gt;
+            &lt;span&gt;Rating:&lt;/span&gt; {this.props.cardData.rating}
+          &lt;/li&gt;
+          &lt;li className={classes['card__details-list-price']}&gt;
+            &lt;span&gt;Stock:&lt;/span&gt; {this.props.cardData.stock}
+          &lt;/li&gt;
+          &lt;li className={classes['card__details-list-brand']}&gt;
+            &lt;span&gt;Brand:&lt;/span&gt; {this.props.cardData.brand}
+          &lt;/li&gt;
+          &lt;li className={classes['card__details-list-category']}&gt;
+            &lt;span&gt;Category:&lt;/span&gt; {this.props.cardData.category}
+          &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;div className={classes['card__details-descr']}&gt;
+          &lt;h3 className={classes['card__details-descr-title']}&gt;Description&lt;/h3&gt;
+          &lt;p className={classes['card__details-descr-text']}&gt;{this.props.cardData.description}&lt;/p&gt;
         &lt;/div&gt;
-        &lt;h3 className={classes.card__title} data-testid="product-card-title"&gt;
-          {this.sliceString(this.props.cardData.title)}
-        &lt;/h3&gt;
-        &lt;p className={classes.card__price}&gt;{`${this.props.cardData.price}$`}&lt;/p&gt;
-        &lt;button className={classes.card__buyBtn}&gt;Buy&lt;/button&gt;
-        &lt;button className={classes.card__detailsBtn} onClick={this.detailsHandler.bind(this)}&gt;
-          {this.state.<span class="branch-0 cbranch-no" title="branch not covered" >details ? 'Hide details' : '</span>Show details'}
-        &lt;/button&gt;
-      &lt;/li&gt;
+      &lt;/div&gt;
     );
   }
 }

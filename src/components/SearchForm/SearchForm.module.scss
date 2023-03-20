@@ -8,8 +8,8 @@
   &__input {
     font-size: 1.5rem;
     padding: 10px;
-    border: 5px solid $lightBlueColor;
     border-radius: 30px;
+    border: 5px solid $lightBlueColor;
     transition: all 0.5s;
     &:focus {
       border-color: $darkBlueColor;

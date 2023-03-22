@@ -9,7 +9,7 @@
   background-color: $darkBlueColor;
   padding: 20px;
   border-radius: 25px;
-  box-shadow: 1px 0px 9px 0px rgba(0, 0, 0, 1);
+  box-shadow: $cardShadow;
   row-gap: 20px;
   &__input,
   &__date,
@@ -44,6 +44,11 @@
     display: flex;
     column-gap: 20px;
     font-size: 1.2rem;
+    &-choose-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     input {
       margin-left: 5px;
       cursor: pointer;
@@ -51,11 +56,20 @@
   }
   &__file {
     input {
-      display: none;
+      padding-top: 5px;
     }
-    border: 1px solid #ccc;
-    display: inline-block;
-    padding: 6px 12px;
-    cursor: pointer;
+    input[type="file"]::file-selector-button {
+      margin-right: 20px;
+      border: none;
+      background: $whiteColor;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.5s;
+    }
+
+    input[type="file"]::file-selector-button:hover {
+      background: $lightBlueColor;
+    }
   }
 }

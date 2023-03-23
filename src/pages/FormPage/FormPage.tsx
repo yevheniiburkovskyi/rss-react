@@ -10,7 +10,7 @@ export interface IUserData {
   date?: string;
   country?: string;
   sex?: string;
-  check?: boolean;
+  checkbox?: boolean;
   file?: File;
 }
 interface IState {

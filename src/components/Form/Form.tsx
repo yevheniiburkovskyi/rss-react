@@ -7,7 +7,17 @@ import CustomInput from './CustomInput/CustomInput';
 interface IProps {
   updateArr: (user: IUserData) => void;
 }
-export default class Form extends Component<IProps> {
+interface IState {
+  validation: IValidation;
+}
+
+interface IValidation {
+  nameValid: boolean;
+  dateValid: boolean;
+  checkboxValid: boolean;
+  fileValid: boolean;
+}
+export default class Form extends Component<IProps, IState> {
   id: number;
   name: React.RefObject<HTMLInputElement>;
   date: React.RefObject<HTMLInputElement>;
@@ -19,15 +29,23 @@ export default class Form extends Component<IProps> {
 
   constructor(props: IProps) {
     super(props);
+    this.state = {
+      validation: {
+        nameValid: true,
+        dateValid: true,
+        checkboxValid: true,
+        fileValid: true,
+      },
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.id = 0;
+    this.id = 1;
     this.name = React.createRef();
     this.date = React.createRef();
     this.select = React.createRef();
-    this.checkbox = React.createRef();
     this.male = React.createRef();
     this.female = React.createRef();
     this.file = React.createRef();
+    this.checkbox = React.createRef();
   }
 
   handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -38,10 +56,29 @@ export default class Form extends Component<IProps> {
       date: this.date.current?.value,
       country: this.select.current?.value,
       sex: this.male.current?.checked ? this.male.current.value : this.female.current?.value,
-      check: this.checkbox.current?.checked,
       file: this.file.current?.files ? this.file.current?.files[0] : undefined,
+      checkbox: this.checkbox.current?.checked,
     };
-    this.props.updateArr(userObj);
+    if (this.checkValidation(userObj)) {
+      this.props.updateArr(userObj);
+    }
+  }
+
+  checkValidation(user: IUserData) {
+    const newValidationObj = { ...this.state.validation };
+    for (const key in newValidationObj) {
+      if (!user[key.replace(/Valid/i, '') as keyof IUserData]) {
+        newValidationObj[key as keyof IValidation] = false;
+      } else {
+        newValidationObj[key as keyof IValidation] = true;
+      }
+    }
+    this.setState({ validation: { ...newValidationObj } });
+    const validationResults = Object.values(newValidationObj);
+    if (validationResults.every((item) => item === true)) {
+      return true;
+    }
+    return false;
   }
 
   render() {
@@ -54,6 +91,7 @@ export default class Form extends Component<IProps> {
             inputSelector: classes.form__input,
             refLink: this.name,
           }}
+          valid={this.state.validation.nameValid}
         />
         <CustomInput
           inputOptions={{
@@ -62,6 +100,7 @@ export default class Form extends Component<IProps> {
             inputSelector: classes.form__date,
             refLink: this.date,
           }}
+          valid={this.state.validation.dateValid}
         />
         <label>
           <p>Country</p>
@@ -110,10 +149,13 @@ export default class Form extends Component<IProps> {
               accept: '.jpg, .jpeg, .png',
             },
           }}
+          valid={this.state.validation.fileValid}
         />
         <label htmlFor="checkbox" className={classes.form__checkbox}>
           <input type="checkbox" ref={this.checkbox} />
-          <p>I consent to my personal data</p>
+          <p className={this.state.validation.checkboxValid ? '' : classes.invalid}>
+            I consent to my personal data
+          </p>
         </label>
         <Button content={'Submit'} type="submit" />
       </form>

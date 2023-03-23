@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import classes from './CustomInput.module.scss';
+import classes from '../Form.module.scss';
 
 interface IOptions {
   title: string;
@@ -17,6 +17,7 @@ interface IOptions {
 
 interface IProps {
   inputOptions: IOptions;
+  defaultValue?: string;
   valid?: boolean;
 }
 
@@ -36,9 +37,10 @@ export default class CustomInput extends Component<IProps> {
           type={this.options.type}
           ref={this.options.refLink}
           className={this.options.inputSelector}
+          defaultValue={this.props.defaultValue}
           {...this.options.otherAttributes}
         />
-        <p className={classes.error}>
+        <p className={classes.invalid}>
           {' '}
           {this.props.valid !== undefined &&
             (this.props.valid ? '' : `Invalid ${this.options.title}`)}

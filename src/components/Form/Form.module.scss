@@ -27,14 +27,15 @@
     cursor: pointer;
   }
   &__select {
+    text-align: center;
     cursor: pointer;
   }
   &__checkbox {
     width: 250px;
-    font-size: 1.2rem;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     column-gap: 10px;
+    cursor: pointer;
     input {
       cursor: pointer;
     }
@@ -74,8 +75,5 @@
 }
 
 .invalid {
-  input {
-    border: 1px solid $redColor;
-  }
   color: $redColor;
 }

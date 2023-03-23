@@ -19,7 +19,7 @@ export default class FileInput extends Component<IProps> {
           labelSelector: classes['form__file'],
           refLink: this.props.refLink,
           otherAttributes: {
-            accept: '.jpg, .jpeg, .png, .webp',
+            accept: 'image/*',
           },
         }}
         valid={this.props.validStatus}

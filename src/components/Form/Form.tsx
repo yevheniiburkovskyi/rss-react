@@ -1,6 +1,6 @@
-import { Button } from '../Button/Button';
 import React, { Component, FormEvent } from 'react';
 import classes from './Form.module.scss';
+import { Button } from '../Button/Button';
 import { IUserData } from 'pages/FormPage/FormPage';
 import SelectInput from './SelectInput/SelectInput';
 import NameInput from './NameInput/NameInput';
@@ -8,6 +8,7 @@ import DateInput from './DateInput/DateInput';
 import RadioInput from './RadioInput/RadioInput';
 import FileInput from './FileInput/FileInput';
 import CheckBoxInput from './CheckBoxInput/CheckBoxInput';
+import Validator from '../../service/formValidation';
 
 interface IProps {
   updateArr: (user: IUserData) => void;
@@ -60,10 +61,11 @@ export default class Form extends Component<IProps, IState> {
 
   handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const validator = new Validator();
     const userObj = {
       id: this.id++,
-      name: this.name.current?.value,
-      date: this.date.current?.value,
+      name: validator.checkName(this.name.current?.value),
+      date: validator.checkDate(this.date.current?.value),
       country: this.country.current?.value,
       sex: this.male.current?.checked ? this.male.current.value : this.female.current?.value,
       file: this.file.current?.files ? this.file.current?.files[0] : undefined,

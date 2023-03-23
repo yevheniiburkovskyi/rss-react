@@ -14,7 +14,7 @@ export default class NameInput extends Component<IProps> {
     return (
       <CustomInput
         inputOptions={{
-          title: 'Date',
+          title: 'Birth Date',
           type: 'date',
           inputSelector: classes.form__date,
           refLink: this.props.refLink,

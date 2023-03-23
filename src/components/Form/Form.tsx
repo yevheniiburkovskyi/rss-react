@@ -2,7 +2,12 @@ import { Button } from '../Button/Button';
 import React, { Component, FormEvent } from 'react';
 import classes from './Form.module.scss';
 import { IUserData } from 'pages/FormPage/FormPage';
-import CustomInput from './CustomInput/CustomInput';
+import SelectInput from './SelectInput/SelectInput';
+import NameInput from './NameInput/NameInput';
+import DateInput from './DateInput/DateInput';
+import RadioInput from './RadioInput/RadioInput';
+import FileInput from './FileInput/FileInput';
+import CheckBoxInput from './CheckBoxInput/CheckBoxInput';
 
 interface IProps {
   updateArr: (user: IUserData) => void;
@@ -90,83 +95,15 @@ export default class Form extends Component<IProps, IState> {
   render() {
     return (
       <form className={classes.form} onSubmit={this.handleSubmit} ref={this.form}>
-        <CustomInput
-          inputOptions={{
-            title: 'Name',
-            type: 'name',
-            inputSelector: classes.form__input,
-            refLink: this.name,
-          }}
-          valid={this.state.validation.nameValid}
-        />
-        <CustomInput
-          inputOptions={{
-            title: 'Date',
-            type: 'date',
-            inputSelector: classes.form__date,
-            refLink: this.date,
-          }}
-          valid={this.state.validation.dateValid}
-        />
-        <label>
-          <p>Country</p>
-          <select name="select" ref={this.country} className={classes.form__select}>
-            <option value="">--Select Country--</option>
-            <option value="Ukraine">Ukraine</option>
-            <option value="Poland">Poland</option>
-            <option value="France">France</option>
-          </select>
-          <p className={classes.invalid}>
-            {this.state.validation.countryValid ? '' : 'Invalid Country'}
-          </p>
-        </label>
+        <NameInput refLink={this.name} validStatus={this.state.validation.nameValid} />
+        <DateInput refLink={this.date} validStatus={this.state.validation.dateValid} />
+        <SelectInput refLink={this.country} validStatus={this.state.validation.countryValid} />
         <div className={classes.form__sex}>
-          <CustomInput
-            inputOptions={{
-              title: 'Male',
-              type: 'radio',
-              inputSelector: classes['form__sex-choose-item'],
-              labelSelector: classes['form__sex-choose-wrapper'],
-              refLink: this.male,
-              otherAttributes: {
-                value: 'Male',
-                name: 'sex',
-                defaultChecked: true,
-              },
-            }}
-          />
-          <CustomInput
-            inputOptions={{
-              title: 'Female',
-              type: 'radio',
-              inputSelector: classes['form__sex-choose-item'],
-              labelSelector: classes['form__sex-choose-wrapper'],
-              refLink: this.female,
-              otherAttributes: {
-                value: 'Female',
-                name: 'sex',
-              },
-            }}
-          />
+          <RadioInput refLink={this.male} value={'Male'} defaultCheckedStatus={true} />
+          <RadioInput refLink={this.female} value={'Female'} />
         </div>
-        <CustomInput
-          inputOptions={{
-            title: 'Photo',
-            type: 'file',
-            labelSelector: classes['form__file'],
-            refLink: this.file,
-            otherAttributes: {
-              accept: '.jpg, .jpeg, .png, .webp',
-            },
-          }}
-          valid={this.state.validation.fileValid}
-        />
-        <label htmlFor="form-checkbox" className={classes.form__checkbox}>
-          <input type="checkbox" ref={this.checkbox} id="form-checkbox" />
-          <p className={this.state.validation.checkboxValid ? '' : classes.invalid}>
-            I consent to my personal data
-          </p>
-        </label>
+        <FileInput refLink={this.file} validStatus={this.state.validation.fileValid} />
+        <CheckBoxInput refLink={this.checkbox} validStatus={this.state.validation.checkboxValid} />
         <Button content={'Submit'} type="submit" />
       </form>
     );

@@ -9,11 +9,13 @@ import RadioInput from './RadioInput/RadioInput';
 import FileInput from './FileInput/FileInput';
 import CheckBoxInput from './CheckBoxInput/CheckBoxInput';
 import Validator from '../../service/formValidation';
+import FormModal from './FormModal/FormModal';
 
 interface IProps {
   updateArr: (user: IUserData) => void;
 }
 interface IState {
+  showModal: boolean;
   validation: IValidation;
 }
 
@@ -21,8 +23,8 @@ interface IValidation {
   nameValid: boolean;
   dateValid: boolean;
   countryValid: boolean;
-  checkboxValid: boolean;
   fileValid: boolean;
+  checkboxValid: boolean;
 }
 
 export default class Form extends Component<IProps, IState> {
@@ -39,12 +41,13 @@ export default class Form extends Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     this.state = {
+      showModal: false,
       validation: {
         nameValid: true,
         dateValid: true,
         countryValid: true,
-        checkboxValid: true,
         fileValid: true,
+        checkboxValid: true,
       },
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -89,9 +92,17 @@ export default class Form extends Component<IProps, IState> {
     const validationResults = Object.values(newValidationObj);
     if (validationResults.every((item) => item === true)) {
       this.form.current?.reset();
+      this.handleModal();
       return true;
     }
     return false;
+  }
+
+  handleModal() {
+    this.setState({ showModal: true });
+    setTimeout(() => {
+      this.setState({ showModal: false });
+    }, 1000);
   }
 
   render() {
@@ -107,6 +118,7 @@ export default class Form extends Component<IProps, IState> {
         <FileInput refLink={this.file} validStatus={this.state.validation.fileValid} />
         <CheckBoxInput refLink={this.checkbox} validStatus={this.state.validation.checkboxValid} />
         <Button content={'Submit'} type="submit" />
+        {this.state.showModal ? <FormModal /> : null}
       </form>
     );
   }

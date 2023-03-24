@@ -7,11 +7,9 @@ export default class Validator {
   }
   checkDate(value: string | undefined) {
     if (value) {
-      const dateArr = value.split('-');
-      if (parseInt(dateArr[0]) < 1900) {
-        return undefined;
+      if (Date.parse(value) < Date.parse(new Date().toString())) {
+        return value;
       }
     }
-    return value;
   }
 }

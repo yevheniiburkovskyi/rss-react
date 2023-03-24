@@ -23,7 +23,6 @@ export default class RadioInput extends Component<IProps> {
           otherAttributes: {
             value: this.props.value,
             name: 'sex',
-            defaultChecked: this.props.defaultCheckedStatus,
           },
         }}
       />

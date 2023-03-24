@@ -23,6 +23,7 @@ interface IValidation {
   nameValid: boolean;
   dateValid: boolean;
   countryValid: boolean;
+  sexValid: boolean;
   fileValid: boolean;
   checkboxValid: boolean;
 }
@@ -46,6 +47,7 @@ export default class Form extends Component<IProps, IState> {
         nameValid: true,
         dateValid: true,
         countryValid: true,
+        sexValid: true,
         fileValid: true,
         checkboxValid: true,
       },
@@ -70,7 +72,7 @@ export default class Form extends Component<IProps, IState> {
       name: validator.checkName(this.name.current?.value),
       date: validator.checkDate(this.date.current?.value),
       country: this.country.current?.value,
-      sex: this.male.current?.checked ? this.male.current.value : this.female.current?.value,
+      sex: validator.checkSex(this.male.current, this.female.current),
       file: this.file.current?.files ? this.file.current?.files[0] : undefined,
       checkbox: this.checkbox.current?.checked,
     };
@@ -112,9 +114,10 @@ export default class Form extends Component<IProps, IState> {
         <DateInput refLink={this.date} validStatus={this.state.validation.dateValid} />
         <SelectInput refLink={this.country} validStatus={this.state.validation.countryValid} />
         <div className={classes.form__sex}>
-          <RadioInput refLink={this.male} value={'Male'} defaultCheckedStatus={true} />
+          <RadioInput refLink={this.male} value={'Male'} />
           <RadioInput refLink={this.female} value={'Female'} />
         </div>
+        {this.state.validation.sexValid ? null : <p className={classes.invalid}>Invalid Sex</p>}
         <FileInput refLink={this.file} validStatus={this.state.validation.fileValid} />
         <CheckBoxInput refLink={this.checkbox} validStatus={this.state.validation.checkboxValid} />
         <Button content={'Submit'} type="submit" />

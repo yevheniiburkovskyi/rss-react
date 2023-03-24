@@ -5,6 +5,13 @@ export default class Validator {
     }
     return undefined;
   }
+  checkSex(firstElem: HTMLInputElement | null, secondElem: HTMLInputElement | null) {
+    if (firstElem && firstElem.checked) {
+      return firstElem.value;
+    } else if (secondElem && secondElem.checked) {
+      return secondElem.value;
+    }
+  }
   checkDate(value: string | undefined) {
     if (value) {
       if (Date.parse(value) < Date.parse(new Date().toString())) {

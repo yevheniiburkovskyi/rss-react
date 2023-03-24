@@ -8,7 +8,7 @@ export default class FormModal extends Component {
       <section className={classes.modal__overlay}>
         <div className={classes.modal__window}>New user successfully created!</div>
       </section>,
-      document.getElementById('overlay-root') as HTMLElement
+      document.getElementById('overlay-root') as HTMLElement // we can use this manipulation for createPortal (read answers)
     );
   }
 }

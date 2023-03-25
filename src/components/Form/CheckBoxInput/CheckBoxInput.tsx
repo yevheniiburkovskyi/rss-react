@@ -12,8 +12,16 @@ export default class CheckBoxInput extends Component<IProps> {
   render() {
     return (
       <label htmlFor="form-checkbox" className={classes.form__checkbox}>
-        <input type="checkbox" ref={this.props.refLink} id="form-checkbox" />
-        <p className={this.props.validStatus ? '' : classes.invalid}>
+        <input
+          type="checkbox"
+          ref={this.props.refLink}
+          id="form-checkbox"
+          data-testid="form-terms"
+        />
+        <p
+          className={this.props.validStatus ? '' : classes.invalid}
+          data-testid="form-terms-invalid"
+        >
           I consent to my personal data
         </p>
       </label>

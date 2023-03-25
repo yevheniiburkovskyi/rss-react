@@ -39,6 +39,7 @@ export default class CustomInput extends Component<IProps> {
           className={this.options.inputSelector}
           defaultValue={this.props.defaultValue}
           {...this.options.otherAttributes}
+          data-testid={`form-${this.options.type}`}
         />
         <p className={classes.invalid}>
           {' '}

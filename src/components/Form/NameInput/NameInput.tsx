@@ -15,7 +15,7 @@ export default class NameInput extends Component<IProps> {
       <CustomInput
         inputOptions={{
           title: 'Name',
-          type: 'name',
+          type: 'text',
           inputSelector: classes.form__input,
           refLink: this.props.refLink,
         }}

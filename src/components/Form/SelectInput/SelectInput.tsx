@@ -12,13 +12,20 @@ export default class SelectInput extends Component<IProps> {
     return (
       <label>
         <p>Country</p>
-        <select name="select" ref={this.props.refLink} className={classes.form__select}>
+        <select
+          name="select"
+          ref={this.props.refLink}
+          className={classes.form__select}
+          data-testid="form-select"
+        >
           <option value="">--Select Country--</option>
           <option value="Ukraine">Ukraine</option>
           <option value="Poland">Poland</option>
           <option value="France">France</option>
         </select>
-        <p className={classes.invalid}>{this.props.validStatus ? '' : 'Invalid Country'}</p>
+        <p className={classes.invalid} data-testid="form-select-invalid">
+          {this.props.validStatus ? '' : 'Invalid Country'}
+        </p>
       </label>
     );
   }

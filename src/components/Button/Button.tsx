@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import classes from './Button.module.scss';
 
 interface IProps {
@@ -6,15 +6,11 @@ interface IProps {
   onClickFunc?: () => void;
   type?: string;
 }
-export class Button extends Component<IProps> {
-  constructor(props: IProps) {
-    super(props);
-  }
-  render() {
-    return (
-      <button className={classes.button} onClick={this.props.onClickFunc}>
-        {this.props.content}
-      </button>
-    );
-  }
+
+export function Button(props: IProps) {
+  return (
+    <button className={classes.button} onClick={props.onClickFunc}>
+      {props.content}
+    </button>
+  );
 }

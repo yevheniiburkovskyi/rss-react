@@ -1,25 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import classes from './SearchForm.module.scss';
 
 interface IProps {
   inputValue: string;
-  setInput: (value: string) => void;
+  setInputValue: (value: string) => void;
 }
-export default class SearchForm extends Component<IProps> {
-  constructor(props: IProps) {
-    super(props);
-  }
-  render() {
-    return (
-      <form className={classes.form} role="search">
-        <input
-          type="search"
-          value={this.props.inputValue}
-          onChange={(e) => this.props.setInput(e.target.value)}
-          className={classes.form__input}
-          placeholder="Search..."
-        />
-      </form>
-    );
-  }
+export default function SearchForm(props: IProps) {
+  return (
+    <form className={classes.form} role="search">
+      <input
+        type="search"
+        value={props.inputValue}
+        onChange={(e) => props.setInputValue(e.target.value)}
+        className={classes.form__input}
+        placeholder="Search..."
+      />
+    </form>
+  );
 }

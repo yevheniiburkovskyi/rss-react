@@ -1,47 +1,38 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import getData, { ICard, IData } from '../../../service/getData';
 import Card from './Card/Card';
 import classes from './CardList.module.scss';
-interface IState {
-  dataArr: undefined | ICard[];
-}
+
 interface IProps {
   searchValue: string;
 }
 
-export default class CardList extends Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props);
-    this.state = {
-      dataArr: undefined,
-    };
-  }
+export default function CardList(props: IProps) {
+  const [dataArr, setDataArr] = useState<ICard[] | undefined>();
 
-  componentDidMount() {
+  useEffect(() => {
     getData()
-      .then((json: IData) => this.setState({ dataArr: json.products }))
+      .then((json: IData) => setDataArr(json.products))
       .catch(() => null);
-  }
+  }, []);
 
-  cardFilter(cardItem: ICard, patternStr: string) {
+  function cardFilter(cardItem: ICard, patternStr: string) {
     const pattern = new RegExp(`^${patternStr}`, 'ig');
     if (cardItem.title.match(pattern)) {
       return <Card key={cardItem.id} cardData={cardItem} />;
     }
   }
 
-  renderList() {
-    if (this.state.dataArr) {
+  function renderList() {
+    if (dataArr) {
       return (
         <ul className={classes.cards}>
-          {this.state.dataArr.map((cardItem) => this.cardFilter(cardItem, this.props.searchValue))}
+          {dataArr.map((cardItem) => cardFilter(cardItem, props.searchValue))}
         </ul>
       );
     }
     return <div className={classes.loading}>Loading...</div>;
   }
 
-  render() {
-    return this.renderList();
-  }
+  return renderList();
 }

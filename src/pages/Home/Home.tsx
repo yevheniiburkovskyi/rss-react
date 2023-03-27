@@ -1,36 +1,25 @@
 import Container from '../../components/Container/Container';
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import CardList from './CardList/CardList';
 import classes from './Home.module.scss';
 import SearchForm from '../../components/SearchForm/SearchForm';
 
-interface IState {
-  inputValue: string;
-}
-export default class Home extends Component<object, IState> {
-  constructor(props: object | Readonly<object>) {
-    super(props);
-    this.state = {
-      inputValue: localStorage.getItem('searchValue') || '',
+export default function Home() {
+  const [inputValue, setInputValue] = useState<string>(localStorage.getItem('searchValue') || '');
+
+  useEffect(() => {
+    localStorage.removeItem('searchValue');
+    return () => {
+      localStorage.setItem('searchValue', inputValue);
     };
-  }
+  }, [inputValue]);
 
-  componentWillUnmount() {
-    localStorage.setItem('searchValue', this.state.inputValue);
-  }
-
-  inputHandler(value: string) {
-    this.setState({ inputValue: value });
-  }
-
-  render() {
-    return (
-      <section className={classes.home}>
-        <Container>
-          <SearchForm inputValue={this.state.inputValue} setInput={this.inputHandler.bind(this)} />
-          <CardList searchValue={this.state.inputValue} />
-        </Container>
-      </section>
-    );
-  }
+  return (
+    <section className={classes.home}>
+      <Container>
+        <SearchForm inputValue={inputValue} setInputValue={setInputValue} />
+        <CardList searchValue={inputValue} />
+      </Container>
+    </section>
+  );
 }

@@ -1,12 +1,5 @@
-import React, { Component, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
-export default class Container extends Component<
-  { children: ReactNode } | Readonly<{ children: ReactNode }>
-> {
-  constructor(props: { children: ReactNode } | Readonly<{ children: ReactNode }>) {
-    super(props);
-  }
-  render() {
-    return <div className="container__container">{this.props.children}</div>;
-  }
+export default function Container({ children }: { children: ReactNode }) {
+  return <div className="container__container">{children}</div>;
 }

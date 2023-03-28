@@ -25,28 +25,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>52/52</span>
+                <span class='fraction'>44/44</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/5</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>52/52</span>
+                <span class='fraction'>44/44</span>
             </div>
         
             
@@ -107,25 +107,7 @@
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L45'></a><a href='#L45'>45</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -145,8 +127,6 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
@@ -161,13 +141,17 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
 import classes from '../Form.module.scss';
 &nbsp;
 interface IOptions {
@@ -184,40 +168,32 @@ interface IOptions {
   };
 }
 &nbsp;
-interface IProps {
+export default function CustomInput({
+  inputOptions,
+  defaultValue,
+  valid,
+}: {
   inputOptions: IOptions;
   defaultValue?: string;
   valid?: boolean;
-}
-&nbsp;
-export default class CustomInput extends Component&lt;IProps&gt; {
-  options: IOptions;
-&nbsp;
-  constructor(props: IProps) {
-    super(props);
-    this.options = this.props.inputOptions;
-  }
-&nbsp;
-  render() {
-    return (
-      &lt;label className={this.options.labelSelector}&gt;
-        &lt;p&gt;{this.options.title}&lt;/p&gt;
-        &lt;input
-          type={this.options.type}
-          ref={this.options.refLink}
-          className={this.options.inputSelector}
-          defaultValue={this.props.defaultValue}
-          {...this.options.otherAttributes}
-          data-testid={`form-${this.options.type}`}
-        /&gt;
-        &lt;p className={classes.invalid}&gt;
-          {' '}
-          {this.props.valid !== undefined &amp;&amp;
-            (this.props.valid ? <span class="branch-0 cbranch-no" title="branch not covered" >'' : `Invalid ${this.options.title}`)}</span>
-        &lt;/p&gt;
-      &lt;/label&gt;
-    );
-  }
+}) {
+  return (
+    &lt;label className={inputOptions.labelSelector}&gt;
+      &lt;p&gt;{inputOptions.title}&lt;/p&gt;
+      &lt;input
+        type={inputOptions.type}
+        ref={inputOptions.refLink}
+        className={inputOptions.inputSelector}
+        defaultValue={defaultValue}
+        {...inputOptions.otherAttributes}
+        data-testid={`form-${inputOptions.type}`}
+      /&gt;
+      &lt;p className={classes.invalid}&gt;
+        {' '}
+        {valid !== undefined &amp;&amp; (valid ? <span class="branch-0 cbranch-no" title="branch not covered" >'' : `Invalid ${inputOptions.title}`)}</span>
+      &lt;/p&gt;
+    &lt;/label&gt;
+  );
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -226,7 +202,7 @@ export default class CustomInput extends Component&lt;IProps&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-28T08:26:24.305Z
+                at 2023-03-28T10:09:30.000Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

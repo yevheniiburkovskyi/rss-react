@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import classes from '../Form.module.scss';
 
 interface IOptions {
@@ -15,38 +15,30 @@ interface IOptions {
   };
 }
 
-interface IProps {
+export default function CustomInput({
+  inputOptions,
+  defaultValue,
+  valid,
+}: {
   inputOptions: IOptions;
   defaultValue?: string;
   valid?: boolean;
-}
-
-export default class CustomInput extends Component<IProps> {
-  options: IOptions;
-
-  constructor(props: IProps) {
-    super(props);
-    this.options = this.props.inputOptions;
-  }
-
-  render() {
-    return (
-      <label className={this.options.labelSelector}>
-        <p>{this.options.title}</p>
-        <input
-          type={this.options.type}
-          ref={this.options.refLink}
-          className={this.options.inputSelector}
-          defaultValue={this.props.defaultValue}
-          {...this.options.otherAttributes}
-          data-testid={`form-${this.options.type}`}
-        />
-        <p className={classes.invalid}>
-          {' '}
-          {this.props.valid !== undefined &&
-            (this.props.valid ? '' : `Invalid ${this.options.title}`)}
-        </p>
-      </label>
-    );
-  }
+}) {
+  return (
+    <label className={inputOptions.labelSelector}>
+      <p>{inputOptions.title}</p>
+      <input
+        type={inputOptions.type}
+        ref={inputOptions.refLink}
+        className={inputOptions.inputSelector}
+        defaultValue={defaultValue}
+        {...inputOptions.otherAttributes}
+        data-testid={`form-${inputOptions.type}`}
+      />
+      <p className={classes.invalid}>
+        {' '}
+        {valid !== undefined && (valid ? '' : `Invalid ${inputOptions.title}`)}
+      </p>
+    </label>
+  );
 }

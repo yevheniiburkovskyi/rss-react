@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.72% </span>
+                <span class="strong">94.73% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>51/55</span>
+                <span class='fraction'>36/38</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.42% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/7</span>
+                <span class='fraction'>4/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/4</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.72% </span>
+                <span class="strong">94.73% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>51/55</span>
+                <span class='fraction'>36/38</span>
             </div>
         
             
@@ -101,31 +101,7 @@
 <a name='L36'></a><a href='#L36'>36</a>
 <a name='L37'></a><a href='#L37'>37</a>
 <a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a>
-<a name='L40'></a><a href='#L40'>40</a>
-<a name='L41'></a><a href='#L41'>41</a>
-<a name='L42'></a><a href='#L42'>42</a>
-<a name='L43'></a><a href='#L43'>43</a>
-<a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L39'></a><a href='#L39'>39</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -135,22 +111,15 @@
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
@@ -170,63 +139,43 @@
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Button } from '../../../../components/Button/Button';
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { ICard } from 'service/getData';
 import classes from './Card.module.scss';
 import CardDetails from './CardDetails';
-interface IProps {
-  cardData: ICard;
-}
-interface IState {
-  details: boolean;
-}
-export default class Card extends Component&lt;IProps, IState&gt; {
-  constructor(props: IProps | Readonly&lt;IProps&gt;) {
-    super(props);
-    this.state = {
-      details: false,
-    };
-  }
 &nbsp;
-  sliceString(str: string) {
+export default function Card({ cardData }: { cardData: ICard }) {
+  const [details, setDetailsStatus] = useState&lt;boolean&gt;(false);
+&nbsp;
+  function sliceString(str: string) {
     if (str.length &gt; 20) {
       return `${str.slice(0, 20)}...`;
     }
     return str;
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  detailsHandler() {</span>
-<span class="cstat-no" title="statement not covered" >    this.setState({</span>
-<span class="cstat-no" title="statement not covered" >      details: !this.state.details,</span>
-<span class="cstat-no" title="statement not covered" >    });</span>
+<span class="fstat-no" title="function not covered" >  function detailsHandler() {</span>
+<span class="cstat-no" title="statement not covered" >    setDetailsStatus((prev) =&gt; !prev);</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
-  render() {
-    return (
-      &lt;li className={classes.card} data-testid="product-card"&gt;
-        &lt;div className={classes.card__block}&gt;
-          &lt;img src={this.props.cardData.thumbnail} alt={this.props.cardData.title} /&gt;
-          &lt;CardDetails
-            cardData={this.props.cardData}
-            activeClass={this.state.<span class="branch-0 cbranch-no" title="branch not covered" >details ? classes.showDetails : c</span>lasses.hideDetails}
-          /&gt;
-        &lt;/div&gt;
-        &lt;h3 className={classes.card__title} data-testid="product-card-title"&gt;
-          {this.sliceString(this.props.cardData.title)}
-        &lt;/h3&gt;
-        &lt;p className={classes.card__price}&gt;{`${this.props.cardData.price}$`}&lt;/p&gt;
-        &lt;Button content={'Buy'} /&gt;
-        &lt;Button
-          onClickFunc={this.detailsHandler.bind(this)}
-          content={this.state.<span class="branch-0 cbranch-no" title="branch not covered" >details ? 'Hide details' : '</span>Show details'}
+  return (
+    &lt;li className={classes.card} data-testid="product-card"&gt;
+      &lt;div className={classes.card__block}&gt;
+        &lt;img src={cardData.thumbnail} alt={cardData.title} /&gt;
+        &lt;CardDetails
+          cardData={cardData}
+          activeClass={<span class="branch-0 cbranch-no" title="branch not covered" >details ? classes.showDetails : c</span>lasses.hideDetails}
         /&gt;
-      &lt;/li&gt;
-    );
-  }
+      &lt;/div&gt;
+      &lt;h3 className={classes.card__title} data-testid="product-card-title"&gt;
+        {sliceString(cardData.title)}
+      &lt;/h3&gt;
+      &lt;p className={classes.card__price}&gt;{`${cardData.price}$`}&lt;/p&gt;
+      &lt;Button content={'Buy'} /&gt;
+      &lt;Button onClickFunc={detailsHandler} content={<span class="branch-0 cbranch-no" title="branch not covered" >details ? 'Hide details' : '</span>Show details'} /&gt;
+    &lt;/li&gt;
+  );
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -235,7 +184,7 @@ export default class Card extends Component&lt;IProps, IState&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-26T18:01:31.267Z
+                at 2023-03-28T08:26:24.305Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

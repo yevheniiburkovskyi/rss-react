@@ -10,7 +10,7 @@
     "lint": "eslint src/*.tsx",
     "format": "prettier --write .",
     "test": "vitest run --coverage",
-    "singleTest": "vitest run tests/UserCard.test.tsx"
+    "singleTest": "vitest run tests/Form.test.tsx"
   },
   "dependencies": {
     "react": "^18.2.0",

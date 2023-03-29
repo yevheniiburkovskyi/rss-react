@@ -1,4 +1,17 @@
 @import "../../theme/variables";
+
+@mixin inputStyle {
+  font-size: 1.2rem;
+  width: 100%;
+  border: 3px solid $darkBlueColor;
+  border-radius: 10px;
+  padding: 10px;
+  transition: border-color $transitionTime;
+  &:focus {
+    border-color: $lightBlueColor;
+  }
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -10,50 +23,46 @@
   border-radius: 25px;
   box-shadow: $cardShadow;
   row-gap: 15px;
-  &__input,
-  &__date,
-  &__select {
-    width: 250px;
-    font-size: 1.2rem;
-    padding: 10px;
-    border-radius: 15px;
-    border: 5px solid $darkBlueColor;
-    transition: all 0.5s;
-    &:focus {
-      border-color: $lightBlueColor;
+
+  &__name,
+  &__date {
+    width: 100%;
+    input {
+      @include inputStyle;
     }
   }
+
   &__date {
     cursor: pointer;
   }
-  &__select {
-    text-align: center;
-    cursor: pointer;
-  }
-  &__checkbox {
-    width: 250px;
-    display: flex;
-    align-items: center;
-    column-gap: 10px;
-    cursor: pointer;
-    input {
+
+  &__country {
+    width: 100%;
+    select {
+      text-align: center;
+      width: 100%;
       cursor: pointer;
+      @include inputStyle;
     }
   }
-  &__sex {
+
+  &__gender {
     display: flex;
     column-gap: 20px;
     font-size: 1.2rem;
-    &-choose-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    input {
-      margin-left: 5px;
+    &-item {
       cursor: pointer;
+      display: flex;
+      h3 {
+        order: 1;
+      }
+      input {
+        cursor: pointer;
+        margin-right: 5px;
+      }
     }
   }
+
   &__file {
     input {
       padding: 5px 0;
@@ -65,15 +74,27 @@
       padding: 10px 20px;
       border-radius: 10px;
       cursor: pointer;
-      transition: background 0.5s;
+      transition: background $transitionTime;
     }
 
     input[type="file"]::file-selector-button:hover {
       background: $lightBlueColor;
     }
   }
-}
 
-.invalid {
-  color: $redColor;
+  &__terms {
+    width: 100%;
+    display: flex;
+    column-gap: 5px;
+    h3 {
+      order: 1;
+      cursor: pointer;
+    }
+    input {
+      cursor: pointer;
+    }
+  }
+  &__error {
+    color: $redColor;
+  }
 }

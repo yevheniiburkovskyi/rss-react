@@ -5,13 +5,12 @@ import Form from '../../components/Form/Form';
 import UserCard from './UserCard/UserCard';
 
 export interface IUserData {
-  id: number;
   name?: string;
   date?: string;
   country?: string;
-  sex?: string;
-  checkbox?: boolean;
+  gender?: string;
   file?: File;
+  terms?: boolean;
 }
 
 export default function FormPage() {
@@ -26,8 +25,8 @@ export default function FormPage() {
       <Container>
         <Form updateArr={updateArr} />
         <ul className={classes['form-page__users']}>
-          {userDataArr.map((item) => (
-            <UserCard userData={item} key={item.id} />
+          {userDataArr.map((item, i) => (
+            <UserCard userData={item} key={i} />
           ))}
         </ul>
       </Container>

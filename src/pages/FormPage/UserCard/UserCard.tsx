@@ -26,7 +26,7 @@ export default function UserCard(props: IProps) {
         <span>Country:</span> {props.userData.country}
       </p>
       <p className={classes.user__sex} data-testid="sex">
-        <span>Sex:</span> {props.userData.sex}
+        <span>Gender:</span> {props.userData.gender}
       </p>
     </li>
   );

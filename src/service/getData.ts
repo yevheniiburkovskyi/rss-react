@@ -1,25 +1,32 @@
 export interface IData {
-  limit: number;
-  products: ICard[];
-  skip: number;
-  total: number;
+  results: ICharacter[];
 }
-export interface ICard {
+export interface ICharacter {
+  created: Date;
+  episode: string[];
+  gender: string;
   id: number;
-  title: string;
-  description: string;
-  price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  brand: string;
-  category: string;
-  thumbnail: string;
-  images: string[];
+  image: string;
+  location: {
+    name: string;
+    url: string;
+  };
+  name: string;
+  origin: {
+    name: string;
+    url: string;
+  };
+  species: string;
+  status: string;
+  url: string;
 }
-export default async function getData() {
-  const res: IData = await fetch('https://dummyjson.com/products?limit=30&skip=10')
-    .then((res) => res.json())
-    .catch(undefined);
-  return res;
+export default async function getData(query = '') {
+  const url = encodeURI(`https://rickandmortyapi.com/api/character/?name=${query}`);
+  const response = await fetch(url);
+  if (response.ok) {
+    const result: Promise<IData> = response.json();
+    return result;
+  } else {
+    return null;
+  }
 }

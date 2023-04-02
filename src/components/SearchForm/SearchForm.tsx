@@ -1,21 +1,35 @@
-import React from 'react';
+import React, { FormEvent, useRef } from 'react';
 import classes from './SearchForm.module.scss';
+import searchIcon from '../../assets/search.svg';
 
-interface IProps {
-  inputValue: string;
-  setInputValue: (value: string) => void;
-}
-export default function SearchForm(props: IProps) {
+export default function SearchForm({
+  setSearchValue,
+}: {
+  setSearchValue: React.Dispatch<React.SetStateAction<string>>;
+}) {
+  const searchInput = useRef<HTMLInputElement>(null);
+
+  function submitHander(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (searchInput.current) {
+      setSearchValue(searchInput.current.value);
+    }
+  }
+
   return (
-    <form className={classes.form}>
-      <input
-        type="search"
-        value={props.inputValue}
-        onChange={(e) => props.setInputValue(e.target.value)}
-        className={classes.form__input}
-        placeholder="Search..."
-        role="search"
-      />
-    </form>
+    <section className={classes.search}>
+      <form className={classes.search__form} onSubmit={submitHander}>
+        <input
+          type="text"
+          className={classes.search__input}
+          placeholder="Put character name..."
+          ref={searchInput}
+          role="search"
+        />
+        <button className={classes.search__button} type="submit">
+          <img src={searchIcon} alt="search" />
+        </button>
+      </form>
+    </section>
   );
 }

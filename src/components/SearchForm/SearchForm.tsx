@@ -4,8 +4,12 @@ import searchIcon from '../../assets/search.svg';
 
 export default function SearchForm({
   setSearchValue,
+  setStorageValue,
+  storageValue,
 }: {
+  storageValue: string;
   setSearchValue: React.Dispatch<React.SetStateAction<string>>;
+  setStorageValue: React.Dispatch<React.SetStateAction<string>>;
 }) {
   const searchInput = useRef<HTMLInputElement>(null);
 
@@ -25,6 +29,8 @@ export default function SearchForm({
           placeholder="Put character name..."
           ref={searchInput}
           role="search"
+          onChange={(e) => setStorageValue(e.target.value)}
+          value={storageValue}
         />
         <button className={classes.search__button} type="submit">
           <img src={searchIcon} alt="search" />

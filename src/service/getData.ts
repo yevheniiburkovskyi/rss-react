@@ -2,7 +2,7 @@ export interface IData {
   results: ICharacter[];
 }
 export interface ICharacter {
-  created: Date;
+  created: string;
   episode: string[];
   gender: string;
   id: number;
@@ -20,6 +20,7 @@ export interface ICharacter {
   status: string;
   url: string;
 }
+
 export default async function getData(query = '') {
   const url = encodeURI(`https://rickandmortyapi.com/api/character/?name=${query}`);
   const response = await fetch(url);
@@ -29,4 +30,10 @@ export default async function getData(query = '') {
   } else {
     return null;
   }
+}
+
+export async function getCharacter(id: string) {
+  const url = encodeURI(`https://rickandmortyapi.com/api/character/${id}`);
+  const result: ICharacter = await fetch(url).then((res) => res.json());
+  return result;
 }

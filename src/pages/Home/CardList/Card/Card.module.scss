@@ -1,5 +1,6 @@
 @import "../../../../theme/_variables";
 .card {
+  cursor: pointer;
   height: 400px;
   width: 300px;
   background-color: $darkBlueColor;
@@ -7,6 +8,10 @@
   border-radius: 25px;
   box-shadow: $cardShadow;
   gap: 20px;
+  transition: all $transitionTime;
+  &:hover {
+    box-shadow: $cardShadowHover;
+  }
   &__block {
     width: 100%;
     height: 300px;

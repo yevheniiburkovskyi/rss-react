@@ -1,21 +1,20 @@
-import React, { FormEvent, useRef } from 'react';
+import React, { FormEvent, SetStateAction, useRef } from 'react';
 import classes from './SearchForm.module.scss';
 import searchIcon from '../../assets/search.svg';
 
 export default function SearchForm({
+  searchValue,
   setSearchValue,
-  setStorageValue,
-  storageValue,
 }: {
-  storageValue: string;
-  setSearchValue: React.Dispatch<React.SetStateAction<string>>;
-  setStorageValue: React.Dispatch<React.SetStateAction<string>>;
+  searchValue: string;
+  setSearchValue: React.Dispatch<SetStateAction<string>>;
 }) {
   const searchInput = useRef<HTMLInputElement>(null);
 
   function submitHander(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (searchInput.current) {
+      localStorage.setItem('searchValue', searchInput.current.value);
       setSearchValue(searchInput.current.value);
     }
   }
@@ -29,8 +28,7 @@ export default function SearchForm({
           placeholder="Put character name..."
           ref={searchInput}
           role="search"
-          onChange={(e) => setStorageValue(e.target.value)}
-          value={storageValue}
+          defaultValue={searchValue}
         />
         <button className={classes.search__button} type="submit">
           <img src={searchIcon} alt="search" />

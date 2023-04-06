@@ -10,11 +10,7 @@ export default function ModalWindow({
   children: React.ReactNode;
 }) {
   return ReactDOM.createPortal(
-    <section
-      className={classes.modal__overlay}
-      onClick={() => setModal && setModal(false)}
-      data-testid="modal-window"
-    >
+    <section className={classes.modal__overlay} onClick={() => setModal && setModal(false)}>
       <div className={classes.modal__window} onClick={(e) => e.stopPropagation()}>
         <span className={classes.modal__close} onClick={() => setModal && setModal(false)}>
           ✖

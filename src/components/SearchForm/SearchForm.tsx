@@ -27,7 +27,6 @@ export default function SearchForm({
           className={classes.search__input}
           placeholder="Put character name..."
           ref={searchInput}
-          role="search"
           defaultValue={searchValue}
         />
         <button className={classes.search__button} type="submit">

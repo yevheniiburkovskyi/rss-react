@@ -81,6 +81,7 @@ body {
   font-family: "Source", sans-serif;
   font-weight: 400;
   color: $fontColor;
+  user-select: none;
 }
 
 [class*="__container"] {

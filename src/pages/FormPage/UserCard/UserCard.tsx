@@ -13,19 +13,18 @@ export default function UserCard(props: IProps) {
         <img
           src={props.userData.file ? URL.createObjectURL(props.userData.file) : ''}
           alt={props.userData.file?.name}
-          data-testid="image"
         />
       </div>
-      <h3 className={classes.user__name} data-testid="name">
+      <h3 className={classes.user__name}>
         <span>Name:</span> {props.userData.name}
       </h3>
-      <p className={classes.user__date} data-testid="date">
+      <p className={classes.user__date}>
         <span>Date:</span> {props.userData.date}
       </p>
-      <p className={classes.user__country} data-testid="country">
+      <p className={classes.user__country}>
         <span>Country:</span> {props.userData.country}
       </p>
-      <p className={classes.user__sex} data-testid="sex">
+      <p className={classes.user__sex}>
         <span>Gender:</span> {props.userData.gender}
       </p>
     </li>

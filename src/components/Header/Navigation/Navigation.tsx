@@ -5,7 +5,7 @@ import classes from './Navigation.module.scss';
 
 export default function Navigation() {
   return (
-    <nav className={classes.navigation__list} role="menubar">
+    <nav className={classes.navigation__list}>
       {routes.map((item) =>
         item.name !== '404' ? (
           <NavLink

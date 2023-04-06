@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">96.42% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>29/29</span>
+                <span class='fraction'>27/28</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">71.42% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>5/7</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">96.42% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>29/29</span>
+                <span class='fraction'>27/28</span>
             </div>
         
             
@@ -91,8 +91,7 @@
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -101,51 +100,49 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Container from '../../components/Container/Container';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CardList from './CardList/CardList';
 import classes from './Home.module.scss';
 import SearchForm from '../../components/SearchForm/SearchForm';
+import getData, { ICharacter } from '../../service/getData';
+import Loading from '../../components/Loading/Loading';
+import NotFound from '../../components/NotFound/NotFound';
 &nbsp;
 export default function Home() {
-  const [inputValue, setInputValue] = useState&lt;string&gt;(localStorage.getItem('searchValue') || '');
-  const valueRef = useRef&lt;string&gt;();
+  const [searchValue, setSearchValue] = useState&lt;string&gt;(localStorage.getItem('searchValue') || '');
+  const [dataArr, setDataArr] = useState&lt;ICharacter[] | undefined | null&gt;();
 &nbsp;
   useEffect(() =&gt; {
-    valueRef.current = inputValue;
-  }, [inputValue]);
-&nbsp;
-  useEffect(() =&gt; {
-    return () =&gt; {
-      localStorage.setItem('searchValue', valueRef.current as string);
-    };
-  }, []);
+    getData(searchValue).then((json) =&gt; (<span class="branch-0 cbranch-no" title="branch not covered" >json ? setDataArr(json.results) : s</span>etDataArr(null)));
+  }, [searchValue]);
 &nbsp;
   return (
     &lt;section className={classes.home}&gt;
       &lt;Container&gt;
-        &lt;SearchForm inputValue={inputValue} setInputValue={setInputValue} /&gt;
-        &lt;CardList searchValue={inputValue} /&gt;
+        &lt;SearchForm searchValue={searchValue} setSearchValue={setSearchValue} /&gt;
+        {(dataArr === null &amp;&amp; &lt;NotFound /&gt;) ||
+          (dataArr === undefined &amp;&amp; &lt;Loading <span class="branch-0 cbranch-no" title="branch not covered" >/&gt;) ||</span>
+<span class="cstat-no" title="statement not covered" >          (dataArr &amp;&amp; &lt;CardList dataArr={dataArr} /&gt;)}</span>
       &lt;/Container&gt;
     &lt;/section&gt;
   );
@@ -157,7 +154,7 @@ export default function Home() {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-04-02T11:53:42.816Z
+                at 2023-04-06T18:44:48.060Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

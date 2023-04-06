@@ -17,18 +17,11 @@ export default function Card({
   }
 
   return (
-    <li
-      className={classes.card}
-      data-testid="product-card"
-      onClick={handleClick}
-      id={`${cardData.id}`}
-    >
+    <li className={classes.card} onClick={handleClick} id={`${cardData.id}`}>
       <div className={classes.card__block}>
         <img src={cardData.image} alt={cardData.name} />
       </div>
-      <h3 className={classes.card__title} data-testid="product-card-title">
-        {cardData.name}
-      </h3>
+      <h3 className={classes.card__title}>{cardData.name}</h3>
     </li>
   );
 }

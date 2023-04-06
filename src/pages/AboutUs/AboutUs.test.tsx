@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import React from 'react';
-import AboutUs from '../src/pages/AboutUs/AboutUs';
+import AboutUs from './AboutUs';
 
 describe('AboutUs', () => {
   it('should have text', () => {

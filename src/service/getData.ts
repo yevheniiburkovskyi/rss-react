@@ -24,12 +24,11 @@ export interface ICharacter {
 export default async function getData(query = '') {
   const url = encodeURI(`https://rickandmortyapi.com/api/character/?name=${query}`);
   const response = await fetch(url);
-  if (response.ok) {
-    const result: Promise<IData> = response.json();
-    return result;
-  } else {
+  if (response.status === 404) {
     return null;
   }
+  const result: Promise<IData> = response.json();
+  return result;
 }
 
 export async function getCharacter(id: string) {

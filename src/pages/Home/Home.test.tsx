@@ -1,16 +1,11 @@
 import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 import Home from './Home';
 
 vi.mock('node-fetch');
 
 const mockData = {
-  info: {
-    count: 826,
-    pages: 42,
-    next: 'https://rickandmortyapi.com/api/character/?page=2',
-    prev: null,
-  },
   results: [
     {
       id: 1,
@@ -39,17 +34,37 @@ const mockData = {
 };
 
 describe('Home', () => {
-  beforeEach(() => {
+  it('Сard shoud be rendered', async () => {
     global.fetch = vi.fn().mockResolvedValue({
       json: () => Promise.resolve(mockData),
     });
-  });
-  it('Search shoud be rendered', async () => {
     render(<Home />);
+    const user = userEvent.setup();
+    const root = document.createElement('div');
+    root.id = 'overlay-root';
+    document.body.append(root);
+
     await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
     const input = screen.getByPlaceholderText(/Put character name.../i);
     const cardName = screen.getByText(/Rick Sanchez/i);
     expect(input).toBeInTheDocument();
     expect(cardName).toBeInTheDocument();
+    user.click(cardName);
+    global.fetch = vi.fn().mockResolvedValue({
+      json: () => Promise.resolve(mockData.results[0]),
+    });
+    await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
+    expect(screen.getByText(/location/i)).toBeInTheDocument();
+  });
+  it('Error shoud be rendered', async () => {
+    global.fetch = vi.fn().mockResolvedValue({
+      json: () => Promise.resolve(null),
+    });
+    render(<Home />);
+    await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
+    const input = screen.getByPlaceholderText(/Put character name.../i);
+    const error = screen.getByText(/nothing found/i);
+    expect(input).toBeInTheDocument();
+    expect(error).toBeInTheDocument();
   });
 });

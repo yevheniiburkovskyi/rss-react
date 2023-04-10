@@ -10,10 +10,7 @@ export default function UserCard(props: IProps) {
   return (
     <li className={classes.user}>
       <div className={classes.user__photo}>
-        <img
-          src={props.userData.file ? URL.createObjectURL(props.userData.file) : ''}
-          alt={props.userData.file?.name}
-        />
+        <img src={props.userData.filePath} alt={'photo'} />
       </div>
       <h3 className={classes.user__name}>
         <span>Name:</span> {props.userData.name}

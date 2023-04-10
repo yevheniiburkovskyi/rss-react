@@ -6,9 +6,11 @@ import SearchForm from '../../components/SearchForm/SearchForm';
 import getData, { ICharacter } from '../../service/getData';
 import Loading from '../../components/Loading/Loading';
 import NotFound from '../../components/NotFound/NotFound';
+import { RootState } from '../../redux/store';
+import { useSelector } from 'react-redux';
 
 export default function Home() {
-  const [searchValue, setSearchValue] = useState<string>(localStorage.getItem('searchValue') || '');
+  const searchValue = useSelector((state: RootState) => state.search.search);
   const [dataArr, setDataArr] = useState<ICharacter[] | undefined | null>();
 
   useEffect(() => {
@@ -18,7 +20,7 @@ export default function Home() {
   return (
     <section className={classes.home}>
       <Container>
-        <SearchForm searchValue={searchValue} setSearchValue={setSearchValue} />
+        <SearchForm />
         {(dataArr === null && <NotFound />) ||
           (dataArr === undefined && <Loading />) ||
           (dataArr && <CardList dataArr={dataArr} />)}

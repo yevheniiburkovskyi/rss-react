@@ -1,24 +1,22 @@
-import React, { FormEvent, SetStateAction, useRef } from 'react';
+import React, { FormEvent, useRef } from 'react';
 import classes from './SearchForm.module.scss';
 import searchIcon from '../../assets/search.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { setSearch } from '../../redux/searchSlice';
 
-export default function SearchForm({
-  searchValue,
-  setSearchValue,
-}: {
-  searchValue: string;
-  setSearchValue: React.Dispatch<SetStateAction<string>>;
-}) {
+export default function SearchForm() {
+  const searchValue = useSelector((state: RootState) => state.search.search);
+  const dispatch = useDispatch();
+
   const searchInput = useRef<HTMLInputElement>(null);
 
   function submitHander(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (searchInput.current) {
-      localStorage.setItem('searchValue', searchInput.current.value);
-      setSearchValue(searchInput.current.value);
+      dispatch(setSearch(searchInput.current.value));
     }
   }
-
   return (
     <section className={classes.search}>
       <form className={classes.search__form} onSubmit={submitHander}>

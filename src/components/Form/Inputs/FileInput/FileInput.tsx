@@ -16,7 +16,7 @@ export default function FileInput({
       <input
         type="file"
         accept="image/*"
-        {...register('file', {
+        {...register('filePath', {
           required: 'Required field',
         })}
       ></input>

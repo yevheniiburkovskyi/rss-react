@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import classes from './Form.module.scss';
 import { Button } from '../Button/Button';
-import { IUserData } from 'pages/FormPage/FormPage';
 import FormModal from './FormModal/FormModal';
 import { useForm } from 'react-hook-form';
 import CountryInput from './Inputs/CountryInput/CountryInput';
@@ -10,21 +9,19 @@ import DateInput from './Inputs/DateInput/DateInput';
 import FileInput from './Inputs/FileInput/FileInput';
 import TermsInput from './Inputs/TermsInput/TermsInput';
 import GenderInput from './Inputs/GenderInput/GenderInput';
-
-interface IProps {
-  updateArr: (user: IUserData) => void;
-}
+import { useDispatch } from 'react-redux';
+import { addUser } from '../../redux/formSlice';
 
 export interface IRegister {
   name?: string;
   date?: string;
   country?: string;
   gender?: string;
-  file?: FileList;
+  filePath?: FileList;
   terms?: boolean;
 }
 
-export default function Form(props: IProps) {
+export default function Form() {
   const {
     register,
     handleSubmit,
@@ -32,12 +29,20 @@ export default function Form(props: IProps) {
     formState: { errors },
   } = useForm<IRegister>({ reValidateMode: 'onSubmit' });
 
+  const dispatch = useDispatch();
+
   const [showModal, setShowModal] = useState(false);
 
   function onSubmit(data: IRegister) {
-    props.updateArr({ ...data, file: data.file?.[0] });
+    dispatch(addUser({ ...data, filePath: getFileUrl(data.filePath) }));
     handleModal();
     reset();
+  }
+
+  function getFileUrl(file: FileList | undefined) {
+    if (file) {
+      return URL.createObjectURL(file[0]);
+    }
   }
 
   function handleModal() {
@@ -57,7 +62,7 @@ export default function Form(props: IProps) {
         <GenderInput register={register} value={'Female'} />
       </div>
       <p className={classes.form__error}>{errors.gender && errors.gender.message}</p>
-      <FileInput register={register} error={errors.file} />
+      <FileInput register={register} error={errors.filePath} />
       <TermsInput register={register} error={errors.terms} />
       <Button content={'Submit'} type="submit" />
       {showModal && <FormModal />}

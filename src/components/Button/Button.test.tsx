@@ -3,7 +3,7 @@ import React from 'react';
 import Button from './Button';
 
 describe('Button', () => {
-  it('should render', async () => {
+  it('should render', () => {
     render(<Button />);
     const button = screen.getByRole('button');
     expect(button).toBeInTheDocument();

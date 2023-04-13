@@ -13,7 +13,7 @@ export default defineConfig({
       enabled: true,
       provider: 'c8',
       all: true,
-      reportsDirectory: './tests/coverage',
+      // reportsDirectory: './tests/coverage',
     },
   },
 });

@@ -3,7 +3,7 @@ import React from 'react';
 import FormModal from './FormModal';
 
 describe('FormModal', () => {
-  it('should render', async () => {
+  it('should render', () => {
     const root = document.createElement('div');
     root.id = 'overlay-root';
     document.body.append(root);

@@ -4,7 +4,7 @@ import Header from './Header';
 import { BrowserRouter } from 'react-router-dom';
 
 describe('Header', () => {
-  it('Header should have navigation', async () => {
+  it('Header should have navigation', () => {
     render(
       <BrowserRouter>
         <Header />

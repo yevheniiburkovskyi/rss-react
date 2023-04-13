@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import classes from './Form.module.scss';
-import { Button } from '../Button/Button';
+import Button from '../Button/Button';
 import FormModal from './FormModal/FormModal';
 import { useForm } from 'react-hook-form';
 import CountryInput from './Inputs/CountryInput/CountryInput';

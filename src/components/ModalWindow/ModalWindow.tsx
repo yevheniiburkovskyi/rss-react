@@ -18,6 +18,6 @@ export default function ModalWindow({
         {children}
       </div>
     </section>,
-    document.getElementById('overlay-root') as HTMLElement // we can use this manipulation for createPortal (read answers)
+    document.getElementById('overlay-root') as HTMLElement
   );
 }

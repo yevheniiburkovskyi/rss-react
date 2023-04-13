@@ -7,7 +7,7 @@ interface IProps {
   type?: string;
 }
 
-export function Button(props: IProps) {
+export default function Button(props: IProps) {
   return (
     <button className={classes.button} onClick={props.onClickFunc}>
       {props.content}

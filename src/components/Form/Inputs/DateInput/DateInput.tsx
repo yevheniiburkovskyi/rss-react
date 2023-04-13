@@ -18,7 +18,6 @@ export default function DateInput({
         return 'Date must be lower than current date';
       }
     }
-    return false;
   }
 
   return (

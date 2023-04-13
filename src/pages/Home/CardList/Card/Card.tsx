@@ -1,5 +1,5 @@
 import React, { MouseEvent } from 'react';
-import { ICharacter } from '../../../../service/getData';
+import { ICharacter } from '../../../../service/rickAndMortyApi';
 import classes from './Card.module.scss';
 
 export default function Card({
@@ -8,7 +8,7 @@ export default function Card({
   setModal,
 }: {
   cardData: ICharacter;
-  setCardId: React.Dispatch<React.SetStateAction<string | null>>;
+  setCardId: React.Dispatch<React.SetStateAction<string>>;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   function handleClick(event: MouseEvent<HTMLLIElement>) {

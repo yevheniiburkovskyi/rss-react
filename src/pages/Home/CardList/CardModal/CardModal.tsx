@@ -1,8 +1,8 @@
 import React from 'react';
-import { ICharacter } from '../../../../service/getData';
+import { ICharacter } from '../../../../service/rickAndMortyApi';
 import classes from './CardModal.module.scss';
 
-export default function CardModal({ characterData }: { characterData: ICharacter | null }) {
+export default function CardModal({ characterData }: { characterData: ICharacter }) {
   return (
     <div className={classes.item}>
       <h3 className={classes.item__name}>{characterData?.name}</h3>

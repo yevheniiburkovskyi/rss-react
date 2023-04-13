@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">42.3% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>28/28</span>
+                <span class='fraction'>11/26</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>9/9</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">42.3% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>28/28</span>
+                <span class='fraction'>11/26</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -89,9 +89,7 @@
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -100,53 +98,49 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Container from '../../components/Container/Container';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import CardList from './CardList/CardList';
 import classes from './Home.module.scss';
 import SearchForm from '../../components/SearchForm/SearchForm';
-import getData, { ICharacter } from '../../service/getData';
 import Loading from '../../components/Loading/Loading';
 import NotFound from '../../components/NotFound/NotFound';
+import { RootState } from '../../redux/store';
+import { useSelector } from 'react-redux';
+import { useGetAllCharactersQuery } from '../../service/rickAndMortyApi';
 &nbsp;
-export default function Home() {
-  const [searchValue, setSearchValue] = useState&lt;string&gt;(localStorage.getItem('searchValue') || '');
-  const [dataArr, setDataArr] = useState&lt;ICharacter[] | undefined | null&gt;();
-&nbsp;
-  useEffect(() =&gt; {
-    getData(searchValue).then((json) =&gt; (json ? setDataArr(json.results) : setDataArr(null)));
-  }, [searchValue]);
-&nbsp;
-  return (
-    &lt;section className={classes.home}&gt;
-      &lt;Container&gt;
-        &lt;SearchForm searchValue={searchValue} setSearchValue={setSearchValue} /&gt;
-        {(dataArr === null &amp;&amp; &lt;NotFound /&gt;) ||
-          (dataArr === undefined &amp;&amp; &lt;Loading /&gt;) ||
-          (dataArr &amp;&amp; &lt;CardList dataArr={dataArr} /&gt;)}
-      &lt;/Container&gt;
-    &lt;/section&gt;
-  );
-}
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >export default function Home() {</span></span>
+<span class="cstat-no" title="statement not covered" >  const searchValue = useSelector((state: RootState) =&gt; state.search.search);</span>
+<span class="cstat-no" title="statement not covered" >  const { data, error, isFetching } = useGetAllCharactersQuery(searchValue);</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  return (</span>
+<span class="cstat-no" title="statement not covered" >    &lt;section className={classes.home}&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;Container&gt;</span>
+<span class="cstat-no" title="statement not covered" >        &lt;SearchForm /&gt;</span>
+<span class="cstat-no" title="statement not covered" >        {(error &amp;&amp; &lt;NotFound /&gt;) ||</span>
+<span class="cstat-no" title="statement not covered" >          (isFetching &amp;&amp; &lt;Loading /&gt;) ||</span>
+<span class="cstat-no" title="statement not covered" >          (data &amp;&amp; &lt;CardList dataArr={data.results} /&gt;)}</span>
+<span class="cstat-no" title="statement not covered" >      &lt;/Container&gt;</span>
+<span class="cstat-no" title="statement not covered" >    &lt;/section&gt;</span>
+<span class="cstat-no" title="statement not covered" >  );</span>
+<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -154,7 +148,7 @@ export default function Home() {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-04-09T19:15:40.327Z
+                at 2023-04-13T17:33:49.756Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

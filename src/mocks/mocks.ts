@@ -46,5 +46,25 @@ export const mockApiResponseData = {
       url: 'https://rickandmortyapi.com/api/character/1',
       created: '2017-11-04T18:48:46.250Z',
     },
+    {
+      id: 183,
+      name: 'Johnny Depp',
+      status: 'Alive',
+      species: 'Human',
+      type: '',
+      gender: 'Male',
+      origin: {
+        name: 'Earth (C-500A)',
+        url: 'https://rickandmortyapi.com/api/location/23',
+      },
+      location: {
+        name: 'Earth (C-500A)',
+        url: 'https://rickandmortyapi.com/api/location/23',
+      },
+      image: 'https://rickandmortyapi.com/api/character/avatar/183.jpeg',
+      episode: ['https://rickandmortyapi.com/api/episode/8'],
+      url: 'https://rickandmortyapi.com/api/character/183',
+      created: '2017-12-29T18:51:29.693Z',
+    },
   ],
 };

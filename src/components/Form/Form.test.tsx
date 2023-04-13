@@ -2,7 +2,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 import Form from './Form';
 import userEvent from '@testing-library/user-event';
-import { mockRegistrationData, mockRegistrationDataInvalid } from '../../../tests/mocks/mocks';
+import { mockRegistrationData, mockRegistrationDataInvalid } from '../../mocks/mocks';
 import StoreProvider from '../../../tests/test-utils';
 
 describe('Form', () => {

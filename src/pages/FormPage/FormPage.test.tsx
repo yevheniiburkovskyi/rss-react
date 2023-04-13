@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import React from 'react';
 import FormPage from './FormPage';
 import * as reduxHooks from 'react-redux';
-import { mockUserDataValid } from '../../../tests/mocks/mocks';
+import { mockUserDataValid } from '../../mocks/mocks';
 
 vi.mock('react-redux');
 describe('FormPage', () => {

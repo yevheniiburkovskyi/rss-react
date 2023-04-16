@@ -5,11 +5,9 @@ import Card from './Card';
 
 describe('Card', () => {
   it('should render', () => {
-    render(
-      <Card cardData={mockApiResponseData.results[0]} setCardId={vi.fn()} setModal={vi.fn()} />
-    );
-    const card = screen.getByText(mockApiResponseData.results[0].name);
-    const image = screen.getByAltText(mockApiResponseData.results[0].name);
+    render(<Card cardData={mockApiResponseData[0]} setCardId={vi.fn()} setModal={vi.fn()} />);
+    const card = screen.getByText(mockApiResponseData[0].name);
+    const image = screen.getByAltText(mockApiResponseData[0].name);
     expect(card).toBeInTheDocument();
     expect(image).toBeInTheDocument();
   });

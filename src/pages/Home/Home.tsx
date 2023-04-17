@@ -1,25 +1,29 @@
 import Container from '../../components/Container/Container';
-import React from 'react';
+import React, { useEffect } from 'react';
 import CardList from './CardList/CardList';
 import classes from './Home.module.scss';
 import SearchForm from '../../components/SearchForm/SearchForm';
 import Loading from '../../components/Loading/Loading';
 import NotFound from '../../components/NotFound/NotFound';
 import { RootState } from '../../redux/store';
-import { useSelector } from 'react-redux';
-import { useGetAllCharactersQuery } from '../../service/rickAndMortyApi';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCharacters } from '../../redux/searchSlice';
+import { AppDispatch } from '../../redux/store';
 
 export default function Home() {
-  const searchValue = useSelector((state: RootState) => state.search.search);
-  const { data, error, isFetching } = useGetAllCharactersQuery(searchValue);
+  const { search, results, status } = useSelector((state: RootState) => state.search);
+  const dispatch = useDispatch<AppDispatch>();
 
+  useEffect(() => {
+    dispatch(fetchCharacters(search));
+  }, [search, dispatch]);
   return (
     <section className={classes.home}>
       <Container>
         <SearchForm />
-        {(error && <NotFound />) ||
-          (isFetching && <Loading />) ||
-          (data && <CardList dataArr={data.results} />)}
+        {(status === 'failed' && <NotFound />) ||
+          (status === 'pending' && <Loading />) ||
+          (status === 'succeeded' && <CardList dataArr={results} />)}
       </Container>
     </section>
   );

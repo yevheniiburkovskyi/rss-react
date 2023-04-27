@@ -21,3 +21,18 @@ export interface ICharacter {
   status: string;
   url: string;
 }
+
+export const rickAndMortyApi = createApi({
+  reducerPath: 'rickAndMortyApi',
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://rickandmortyapi.com/api/' }),
+  endpoints: (builder) => ({
+    getAllCharacters: builder.query<IData, string>({
+      query: (name = '') => `character/?name=${name}`,
+    }),
+    getSingleCharacter: builder.query<ICharacter, string>({
+      query: (id: string) => `character/${id}`,
+    }),
+  }),
+});
+
+export const { useGetAllCharactersQuery, useGetSingleCharacterQuery } = rickAndMortyApi;

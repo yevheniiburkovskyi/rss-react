@@ -4,16 +4,21 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "eslint src/*.tsx",
     "format": "prettier --write .",
     "test": "vitest run --coverage",
-    "singleTest": "vitest run tests/Form.test.tsx"
+    "cy:open-e2e": "cypress open --e2e --browser chrome",
+    "cy:open-unit": "cypress open --component --browser chrome",
+    "cy:run-e2e": "cypress run --e2e",
+    "cy:run-unit": "cypress run --component",
+    "cy:e2e": "start-server-and-test start http-get://localhost:3000 cy:run-e2e"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
+    "express": "^4.18.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.8",
@@ -21,9 +26,13 @@
     "react-router-dom": "^6.9.0"
   },
   "devDependencies": {
+    "@cypress/code-coverage": "^3.10.4",
+    "@cypress/react18": "^2.0.0",
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
+    "@types/express": "^4.17.17",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@typescript-eslint/eslint-plugin": "^5.22.0",
@@ -31,6 +40,7 @@
     "@vitejs/plugin-react": "^3.1.0",
     "@vitest/coverage-c8": "^0.29.2",
     "cross-fetch": "^3.1.5",
+    "cypress": "^12.11.0",
     "eslint": "^8.14.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^2.7.1",
@@ -45,8 +55,10 @@
     "msw": "^1.2.1",
     "prettier": "^2.6.2",
     "sass": "^1.59.2",
+    "start-server-and-test": "^2.0.0",
     "typescript": "^4.9.3",
     "vite": "^4.1.0",
+    "vite-plugin-istanbul": "^4.0.1",
     "vitest": "^0.29.2"
   },
   "husky": {

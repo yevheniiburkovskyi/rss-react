@@ -1,4 +1,7 @@
 describe('Navigation', () => {
+  afterEach(() => {
+    cy.window().trigger('unload');
+  });
   it('should change page', () => {
     cy.visit('/');
     cy.get('a').contains('Form').click();
@@ -21,6 +24,9 @@ describe('Navigation', () => {
 });
 
 describe('Home', () => {
+  afterEach(() => {
+    cy.window().trigger('unload');
+  });
   beforeEach(() => cy.visit('/'));
   it('should find,open card details and close', () => {
     const input = cy.get('input[type="text"]');
@@ -40,6 +46,9 @@ describe('Home', () => {
 });
 
 describe('Form', () => {
+  afterEach(() => {
+    cy.window().trigger('unload');
+  });
   beforeEach(() => cy.visit('/Form'));
   it('success submition', () => {
     cy.get('form').should('exist');

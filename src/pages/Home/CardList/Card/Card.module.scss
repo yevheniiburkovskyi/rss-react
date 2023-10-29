@@ -1,0 +1,55 @@
+@import "../../../../theme/_variables";
+.card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $purpleColor;
+  padding: 20px;
+  border-radius: 25px;
+  border: 2px solid $blueColor;
+  &__img {
+    width: 100%;
+    height: 300px;
+    background-color: white;
+    border: 2px solid $blueColor;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+  &__title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    height: 25px;
+  }
+  &__price {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  &__buy,
+  &__details {
+    width: 200px;
+    height: 50px;
+    background-color: $blueColor;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $fontColor;
+    font-size: 1.5rem;
+    transition: all 0.5s;
+    margin-bottom: 10px;
+    &:hover {
+      background-color: $yellowColor;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+@import "../../theme/variables";
+.header {
+  background-color: $blueColor;
+  font-weight: 700;
+  height: 15vh;
+  &__title {
+    font-size: 3rem;
+    font-weight: 700;
+  }
+  &__wrapper {
+    height: 15vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

@@ -1,0 +1,18 @@
+@import "../../theme/variables";
+.button {
+  width: 200px;
+  height: 50px;
+  background-color: $whiteColor;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $fontColor;
+  font-size: 1.5rem;
+  transition: all 0.5s;
+  margin-bottom: 10px;
+  color: $blackColor;
+  &:hover {
+    background-color: $lightBlueColor;
+  }
+}

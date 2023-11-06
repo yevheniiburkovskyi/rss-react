@@ -1,0 +1,11 @@
+@import "../../theme/variables";
+.form-page {
+  &__users {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+}

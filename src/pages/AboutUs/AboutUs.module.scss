@@ -1,0 +1,9 @@
+@import "../../theme/variables";
+.about {
+  &__descr {
+    color: $blackColor;
+    text-align: justify;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+  }
+}

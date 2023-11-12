@@ -1,0 +1,14 @@
+@import "../../../theme/_variables";
+.cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.loading {
+  font-size: 3rem;
+  text-align: center;
+  color: $blackColor;
+}

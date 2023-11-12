@@ -1,0 +1,100 @@
+@import "../../theme/variables";
+
+@mixin inputStyle {
+  font-size: 1.2rem;
+  width: 100%;
+  border: 3px solid $darkBlueColor;
+  border-radius: 10px;
+  padding: 10px;
+  transition: border-color $transitionTime;
+  &:focus {
+    border-color: $lightBlueColor;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  width: 300px;
+  background-color: $darkBlueColor;
+  padding: 20px;
+  border-radius: 25px;
+  box-shadow: $cardShadow;
+  row-gap: 15px;
+
+  &__name,
+  &__date {
+    width: 100%;
+    input {
+      @include inputStyle;
+    }
+  }
+
+  &__date {
+    cursor: pointer;
+  }
+
+  &__country {
+    width: 100%;
+    select {
+      text-align: center;
+      width: 100%;
+      cursor: pointer;
+      @include inputStyle;
+    }
+  }
+
+  &__gender {
+    display: flex;
+    column-gap: 20px;
+    font-size: 1.2rem;
+    &-item {
+      cursor: pointer;
+      display: flex;
+      h3 {
+        order: 1;
+      }
+      input {
+        cursor: pointer;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  &__file {
+    input {
+      padding: 5px 0;
+    }
+    input[type="file"]::file-selector-button {
+      margin-right: 20px;
+      border: none;
+      background: $whiteColor;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background $transitionTime;
+    }
+
+    input[type="file"]::file-selector-button:hover {
+      background: $lightBlueColor;
+    }
+  }
+
+  &__terms {
+    width: 100%;
+    display: flex;
+    column-gap: 5px;
+    h3 {
+      order: 1;
+      cursor: pointer;
+    }
+    input {
+      cursor: pointer;
+    }
+  }
+  &__error {
+    color: $redColor;
+  }
+}

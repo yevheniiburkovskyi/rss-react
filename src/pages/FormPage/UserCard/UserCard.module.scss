@@ -1,0 +1,33 @@
+@import "../../../theme/variables";
+.user {
+  width: 300px;
+  padding: 20px;
+  background-color: $darkBlueColor;
+  border-radius: 25px;
+  box-shadow: $cardShadow;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 20px;
+  span {
+    font-weight: 700;
+  }
+  &__photo {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    border: 2px solid $lightBlueColor;
+    background-color: $whiteColor;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+  &__name,
+  &__date,
+  &__country,
+  &__sex {
+    font-size: 1.2rem;
+  }
+}
